@@ -1,0 +1,5 @@
+Type '{ value: PizzaSize | ((input: string) => PizzaSize | null) | (() => string[]) | Choice<PizzaSize>[]; name: string; }[]' is not assignable to type 'Choice<PizzaSize>[]'.
+  Type '{ value: PizzaSize | ((input: string) => PizzaSize | null) | (() => string[]) | Choice<PizzaSize>[]; name: string; }' is not assignable to type 'Choice<PizzaSize>'.
+    Types of property 'value' are incompatible.
+      Type 'PizzaSize | ((input: string) => PizzaSize | null) | (() => string[]) | Choice<PizzaSize>[]' is not assignable to type 'PizzaSize'.
+        Type '(input: string) => PizzaSize | null' is not assignable to type 'PizzaSize'.ts(2322)

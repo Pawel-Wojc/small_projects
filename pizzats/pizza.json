@@ -1,0 +1,23 @@
+{
+  "pizzas": {
+    "margarita": {
+      "cost": {
+        "small": 12,
+        "medium": 16,
+        "large": 20
+      },
+
+      "toppings": ["ser", "kielbasa"]
+    },
+    "studencka": {
+      "cost": {
+        "small": 10,
+        "medium": 14,
+        "large": 18
+      },
+
+      "toppings": ["ser", "salami", "paprika"]
+    }
+  },
+  "toppings": ["ser", "kielbasa", "salami", "paprika"]
+}
