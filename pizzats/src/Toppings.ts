@@ -7,10 +7,18 @@ export const extraToppings = [
   { key: "kielbasa", value: 4 },
   { key: "boczek", value: 5 },
   { key: "zgnily_ananas", value: 10 },
-  { key: "dobry_ananas", value: 4 },
+  { key: "dobry_ananas", value: 8 },
   { key: "bazylia", value: 0.5 },
-  { key: "pomidorki_koktajlowe", value: 0.2 },
+  { key: "pomidorki_koktajlowe", value: 2 },
 ];
+
+export function getExtraToppingPrice(topping: string): number | undefined {
+  const findTopping = extraToppings.find((extraTopping) => extraTopping.key == topping);
+  if (findTopping) {
+    return findTopping.value;
+  }
+  return undefined;
+}
 
 export const extraToppingsCostBySize = [
   { key: PizzaSize.Small, value: 0 },
@@ -20,7 +28,7 @@ export const extraToppingsCostBySize = [
 
 export const defaultToppings = [
   { key: PizzaType.MARGHERITA, value: ["ser"] },
-  { key: PizzaType.STUDENTCKA, value: [""] },
+  { key: PizzaType.STUDENTCKA, value: [] },
   {
     key: PizzaType.GLODNY_STUDENT,
     value: ["bazylia"],

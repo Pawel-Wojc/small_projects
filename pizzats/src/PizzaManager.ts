@@ -5,13 +5,10 @@ import { PizzaDecorator } from "./PizzaDecorator";
 import { pizzaTypeChoices } from "./PizzaData";
 import { getExtraToppingChoices, getToppingChoicesForPizza } from "./Toppings";
 
-//const menuOptions: string[] = ["Packaging", "Select size", "Add toppings", "Delete toppings", "Finish"];
-
 export class PizzaManager {
   view = new View();
   builder = new PizzaBuilder();
   async run() {
-    //await this.view.Select("Menu", ["Packaging", "Select size", "Add toppings", "Delete toppings", "Finish"])
     await this.view.Confirm("Package?").then((res) => {
       if (res) {
         this.builder.addPackaging();
@@ -26,6 +23,7 @@ export class PizzaManager {
     await this.view.Select("Select pizza?", pizzaTypeChoices).then((res) => {
       this.builder.setType(res);
     });
+
     const toppings = getToppingChoicesForPizza(this.builder.getType()!);
     if (toppings.length > 0) {
       //if pizza has any toppings
@@ -34,16 +32,9 @@ export class PizzaManager {
       });
     }
 
-    while (true) {
-      const addAnother = await this.view.Confirm("Add any other toppings?");
-
-      if (!addAnother) {
-        break;
-      }
-
+    while (await this.view.Confirm("Add any other toppings?")) {
       const topping = await this.view.Select("Select topping to add", getExtraToppingChoices);
       const quantity = await this.view.Number("Quantity");
-
       this.builder.addToppings(topping, quantity);
     }
 

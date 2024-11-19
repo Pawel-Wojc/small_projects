@@ -35,10 +35,16 @@ export class PizzaBuilder {
     return this.type;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getSize(): PizzaSize | undefined {
+    return this.size;
+  }
+
+  getToppings(): [string, number][] {
+    return this.toppings;
+  }
+
   addToppings(ingredient: string, quantity: number) {
     this.toppings.push([ingredient, quantity]);
-
     return this;
   }
   addPackaging() {

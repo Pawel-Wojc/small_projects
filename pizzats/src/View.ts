@@ -38,7 +38,7 @@ export class View {
   ShowOrder(price: number, tooppings: [string, number][], pizzaType: string) {
     console.log(`Pizza type: ${pizzaType}`);
     console.log(`Final cost: ${price}`);
-    console.log(`Toppings: ${tooppings}`);
+    console.log(`Toppings: `);
     tooppings.forEach((element) => {
       console.log(element);
     });

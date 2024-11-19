@@ -6,4 +6,5 @@ export interface IPizza {
   size: PizzaSize;
   type: PizzaType;
   toppings: [string, number][];
+  packaging: boolean;
 }

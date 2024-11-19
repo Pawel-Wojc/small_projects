@@ -55,10 +55,10 @@ const PizzaCost = [
   },
 ];
 
-export function getPizzaCost(pizzaType: PizzaType, pizzaSize: PizzaSize): number | undefined {
+export function getPizzaCost(pizzaType: PizzaType, pizzaSize: PizzaSize): number {
   const pizza = PizzaCost.find((item) => item.key === pizzaType);
   const size = pizza?.value.find((sizeItem) => sizeItem.key === pizzaSize);
-  return size ? size.value : undefined;
+  return size ? size.value : 0;
 }
 
 export function getPackageCost(pizzaSize: PizzaSize): number | undefined {
