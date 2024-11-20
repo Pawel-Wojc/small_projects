@@ -20,11 +20,12 @@ export class PizzaDecorator implements IPizza {
 
     this.addPackagingCost();
   }
+
   addExtraToppingsCost(price: number): number {
     //delete price of basics toppings first
-    const toppings = this.deleteBasicsToppings();
-
+    const toppings = this.getToppingsWithoutBasicsToppings();
     let toppingsCost = 0;
+
     toppings.forEach((toppings) => {
       const oneToppingCost = getExtraToppingPrice(toppings[0]);
       if (oneToppingCost) {
@@ -74,7 +75,8 @@ export class PizzaDecorator implements IPizza {
     }
   }
 
-  private deleteBasicsToppings() {
+  private getToppingsWithoutBasicsToppings() {
+    //'deleting' basics toppings to not include them in price calculations
     const defaultToppings = getDefaultToppings(this.type);
     const newToppings = structuredClone(this.toppings);
 
@@ -86,7 +88,6 @@ export class PizzaDecorator implements IPizza {
       });
       return newToppings;
     }
-
     return this.toppings;
   }
 }
