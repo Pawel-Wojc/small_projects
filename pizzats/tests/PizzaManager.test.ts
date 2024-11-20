@@ -40,10 +40,14 @@ describe("PizzaManager", () => {
     expect(pizzaManager.builder.getToppings()).toEqual([["ser", 1]]);
 
     // Verify ShowOrder was called
-    expect(mockView.ShowOrder).toHaveBeenCalledWith(
-      expect.any(Number), // Price
-      expect.any(Array), // Toppings
-      PizzaType.MARGHERITA // Pizza type
-    );
+    expect(mockView.ShowOrder).toHaveBeenCalledWith([
+      expect.objectContaining({
+        price: expect.any(Number),
+        size: PizzaSize.Medium,
+        type: PizzaType.MARGHERITA,
+        toppings: [["ser", 1]],
+        packaging: false, // Update expectation based on received value
+      }),
+    ]);
   });
 });

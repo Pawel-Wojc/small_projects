@@ -1,4 +1,5 @@
 import { checkbox, select, confirm, number } from "@inquirer/prompts";
+import { IPizza } from "./PizzaInterface";
 
 type Choice<Value> = {
   value: Value;
@@ -35,12 +36,19 @@ export class View {
     return 1;
   }
 
-  ShowOrder(price: number, tooppings: [string, number][], pizzaType: string) {
-    console.log(`Pizza type: ${pizzaType}`);
-    console.log(`Final cost: ${price}`);
-    console.log(`Toppings: `);
-    tooppings.forEach((element) => {
-      console.log(element);
+  ShowOrder(order: IPizza[]) {
+    let finalOrderCost = 0;
+    order.forEach((item) => {
+      console.log("----------------------------------------");
+      finalOrderCost += item.price;
+      console.log(`Pizza type: ${item.type}`);
+      console.log(`Pizza size: ${item.size}`);
+      console.log(`Final cost: ${item.price}`);
+      console.log(`Toppings: `);
+      item.toppings.forEach((element) => {
+        console.log(element);
+      });
     });
+    console.log(`Final order cost: ${finalOrderCost}`);
   }
 }
