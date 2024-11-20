@@ -4,31 +4,29 @@ import { View } from "../src/View";
 import { PizzaSize } from "../src/PizzaSize";
 import { PizzaType } from "../src/PizzaData";
 
-jest.mock("../src/View", () => {
-  return {
-    View: jest.fn().mockImplementation(() => ({
-      Confirm: jest.fn(), // Mock Confirm as a function
-      Select: jest.fn(),
-      CheckBox: jest.fn(),
-      Number: jest.fn(),
-      ShowOrder: jest.fn(),
-    })),
-  };
-});
+jest.mock("../src/View");
 
 describe("PizzaManager", () => {
   let pizzaManager: PizzaManager;
   let mockView: jest.Mocked<View>;
 
   beforeEach(() => {
-    mockView = new View() as jest.Mocked<View>;
+    jest.clearAllMocks();
+    mockView = {
+      Confirm: jest.fn(),
+      Select: jest.fn(),
+      CheckBox: jest.fn(),
+      Number: jest.fn(),
+      ShowOrder: jest.fn(),
+    } as unknown as jest.Mocked<View>;
+
     pizzaManager = new PizzaManager();
     pizzaManager.view = mockView;
     pizzaManager.builder = new PizzaBuilder();
   });
 
   it("shoul handle the full pizza creation flow", async () => {
-    mockView.Confirm.mockResolvedValue(true);
+    mockView.Confirm.mockResolvedValueOnce(false).mockResolvedValueOnce(false);
     mockView.Select.mockResolvedValueOnce(PizzaSize.Medium); //size
     mockView.Select.mockResolvedValueOnce(PizzaType.MARGHERITA); //type
     mockView.CheckBox.mockResolvedValueOnce([]); //delete toppings
