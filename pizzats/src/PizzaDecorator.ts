@@ -47,7 +47,7 @@ export class PizzaDecorator implements IPizza {
   }
 
   private addDiscount(price: number): number {
-    //Promka ananas każdy jeden + 50 ziko
+    //Promka ananas każdy jeden + 50 zikoxs
 
     const ananas = this.toppings.find((topping) => topping[0] == "dobry_ananas" || topping[0] == "zgnily_ananas");
     if (ananas) {

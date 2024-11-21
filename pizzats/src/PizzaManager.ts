@@ -43,20 +43,15 @@ export class PizzaManager {
       }
 
       let pizza = this.builder.build();
+      if (pizza) {
+        pizza = new PizzaDecorator(pizza);
+        order.push(pizza);
+      }
 
       await this.view.Confirm("Add another pizza to your order?").then((res) => {
         if (!res) {
           anotherPizza = false;
-          if (pizza) {
-            pizza = new PizzaDecorator(pizza);
-            order.push(pizza);
-          }
           this.view.ShowOrder(order);
-        } else {
-          if (pizza) {
-            pizza = new PizzaDecorator(pizza);
-            order.push(pizza);
-          }
         }
       });
     }
