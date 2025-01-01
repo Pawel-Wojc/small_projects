@@ -24,7 +24,7 @@ class View:
         print("Transaction details:", trash_amount, "trash at a price of", trash_price, "for", round(transaction_value, 2))
 
 
-    def print_successfully_buy(self, trash_price , trash_amount , tra nsaction_value):
+    def print_successfully_buy(self, trash_price , trash_amount , transaction_value):
         print("You bought!")
         print("Transaction details:", trash_amount, "trash at a price of", trash_price, "for", round(transaction_value, 2))
 
