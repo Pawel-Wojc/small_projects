@@ -10,3 +10,6 @@ class View:
 
     def print_new_word(self, word):
         print("New word: ", word)
+
+    def print_best_word(self, word, score):
+        print(f"Najbardziej wartościowe słowo: {word}, punkty: {score}")
